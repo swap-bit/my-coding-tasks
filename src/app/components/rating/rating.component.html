@@ -1,0 +1,21 @@
+<div class="flex justify-center">
+  <p-card header="Rate Us" class="w-[300px] m-5">
+    <div class="flex gap-2 justify-center my-2">
+      @for (rating of ratingArr; track $index) {
+        <p-button
+          class="unstyled-button text-yellow-500 text-xl"
+          [icon]="rating <= currentRating() ? 'pi pi-star-fill' : 'pi pi-star'"
+          (onClick)="selectedRating(rating)"
+          [rounded]="true"
+        />
+      }
+    </div>
+    <p-divider class="my-3" />
+    @if (currentRating() > 0) {
+      <p-progressBar
+        [value]="progressPercentage()"
+        class="h-2 bg-gray-200 rounded-full overflow-hidden"
+      />
+    }
+  </p-card>
+</div>
