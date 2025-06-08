@@ -1,2 +1,24 @@
 
-<router-outlet />
+<h1 class="text-4xl font-bold text-gray-800 text-center m-5 tracking-tight">
+  <p-button class="m-5" icon="pi pi-align-justify" (onClick)="collapsed.set(!collapsed())"/>
+  {{ title }}
+</h1>
+<div class="flex h-screen">
+  <!-- Sidebar -->
+  <app-side-navbar
+    [collapsed]="collapsed()"
+    [sidebarData]="sidebarData()"
+    [ngClass]="[
+      collapsed() ? 'w-[100px]' : 'w-[250px]',
+      'fixed top-0 left-0 h-full bg-gray-100 shadow-md transition-all duration-300'
+    ]"
+  >
+  </app-side-navbar>
+  <!-- Main content area -->
+  <div class="flex-1 flex justify-center items-start">
+    <div class="w-[400px]">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
